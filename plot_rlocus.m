@@ -1,3 +1,4 @@
+clear all;
 ctr_type = 'p';
 
 K = 0.90035;
@@ -15,7 +16,7 @@ switch ctr_type
         Ki = 0;
     case 'pd'
         Kp = 1;
-        Kd = 1;
+        Kd = 10;
         Ki = 0;
     case 'pi'
         Kp = 1;

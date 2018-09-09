@@ -1,5 +1,5 @@
 clear all;
-ctr_type = 'p';
+ctr_type = 'pi';
 
 K = 0.90035;
 Td = 0.035;
@@ -7,7 +7,7 @@ tau = 0.42;
 
 switch ctr_type
     case 'p'
-        Kp = 8.4;
+        Kp = 6.5;
         Kd = 0;
         Ki = 0;
     case 'pd'
@@ -17,7 +17,7 @@ switch ctr_type
     case 'pi'
         Kp = 7.5;
         Kd = 0;
-        Ki = 14;
+        Ki = 25;
     case 'pid'
         Kp = 1;
         Kd = 1;
