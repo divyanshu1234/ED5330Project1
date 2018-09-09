@@ -1,7 +1,7 @@
-function [maxi, maxo, freqi, freqo] = spectrum2 (F_i_j)
+function [maxi, maxo, freqi, freqo] = spectrum2 (F_i)
 
-x = F_i_j(:,2);
-y = F_i_j(:,3);
+x = F_i(:,2);
+y = F_i(:,3);
 %input
 N=length(x);
 NFFT = 2^nextpow2(N); % Next power of 2 from length of y
