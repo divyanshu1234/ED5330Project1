@@ -3,8 +3,9 @@ time = step_i(:,1);
 pressure = step_i(:,3);
 t0 = time(1);
 input = step_i(4000,2);
+threshold = 0.005;
 
-[~, min_t1_i] = min(abs(pressure - 0.005));
+[~, min_t1_i] = min(abs(pressure - threshold));
 
 avg_final_pressure = mean(pressure(4000:6000));
 [~, min_t2_i] = min(abs(pressure - avg_final_pressure*0.632));
