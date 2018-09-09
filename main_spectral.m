@@ -1,3 +1,5 @@
+% Finds dominant frequency and makes the Bode plot
+
 clear all;
 load('material_proj1/frequency_response_data_final.mat')
 

@@ -1,5 +1,7 @@
+% Plots root locus for different types of controllers
+
 clear all;
-ctr_type = 'p';
+ctr_type = 'pd';
 
 K = 0.90035;
 Td = 0.035;
@@ -11,28 +13,24 @@ beta_rad = deg2rad(beta_deg);
 
 switch ctr_type
     case 'p'
-        Kp = 1;
-        Kd = 0;
-        Ki = 0;
+        Kd_Kp = 0;
+        Ki_Kp = 0;
     case 'pd'
-        Kp = 1;
-        Kd = 10;
-        Ki = 0;
+        Kd_Kp = 0.0119;
+        Ki_Kp = 0;
     case 'pi'
-        Kp = 1;
-        Kd = 0;
-        Ki = 1;
+        Kd_Kp = 0;
+        Ki_Kp = 1;
     case 'pid'
-        Kp = 1;
-        Kd = 1;
-        Ki = 1;
+        Kd_Kp = 1;
+        Ki_Kp = 1;
 end
 
 
 s = tf('s');
 P_s = K * (2-Td*s) / ((1+tau*s)*(2+Td*s));
 
-C_s = Kp + Kd*s + Ki/s;
+C_s = 1 + Kd_Kp*s + Ki_Kp/s;
 G_s = C_s * P_s;
 
 op_tr_fn = G_s * H_s;

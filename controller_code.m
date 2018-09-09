@@ -1,5 +1,7 @@
+% Simulates the closed loop control output
+
 clear all;
-ctr_type = 'p';
+ctr_type = 'pid';
 
 K = 0.90035;
 Td = 0.035;
@@ -11,17 +13,17 @@ switch ctr_type
         Kd = 0;
         Ki = 0;
     case 'pd'
-        Kp = 6.8;
+        Kp = 8.4;
         Kd = 0.1;
         Ki = 0;
     case 'pi'
-        Kp = 7.5;
+        Kp = 8.4;
         Kd = 0;
         Ki = 14;
     case 'pid'
-        Kp = 1;
-        Kd = 1;
-        Ki = 1;
+        Kp = 8.4;
+        Kd = 0.2;
+        Ki = 14;
 end
 
 

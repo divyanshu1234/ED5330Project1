@@ -1,3 +1,5 @@
+% Finds plant transfer function parameters using step input
+
 clear all;
 load('material_proj1/step_response_data_final');
 

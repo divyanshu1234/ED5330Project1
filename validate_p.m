@@ -1,3 +1,5 @@
+% Finds Kp value that give the least steady state error
+
 clear all;
 
 K = 0.90035;
