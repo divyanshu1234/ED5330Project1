@@ -2,14 +2,12 @@
 
 clear all;
 
-K = 0.90035;
-Td = 0.035;
-tau = 0.42;
+[K, Td, tau] = get_values();
 
 H_s = 1;
 s = tf('s');
 P_s = K * (2-Td*s) / ((1+tau*s)*(2+Td*s));
-Kp_vals = 4.3:0.1:8.4;
+Kp_vals = 4.7:0.1:9.3;
 err = zeros(length(Kp_vals), 1);
 
 for i = 1:length(Kp_vals)
@@ -30,3 +28,5 @@ end
 
 [min_err, min_err_i] = min(err);
 printf('Kp with min std. err.', Kp_vals(min_err_i));
+printf('Steady state error', min(err));
+printf('MP', max(step_res_sim) - step_res_sim(3000));

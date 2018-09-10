@@ -34,7 +34,7 @@ G_s = C_s * P_s;
 op_tr_fn = G_s * H_s;
 
 rlocus(op_tr_fn);
-title('')
+title
 hold on;
 plot([0 -100], [0 100*tan(beta_rad)], 'black', [0 -100], [0 -100*tan(beta_rad)], 'black');
 plot([0 -100], [pi/0.7 pi/0.7], 'black', [0 -100], [-pi/0.7 -pi/0.7], 'black');

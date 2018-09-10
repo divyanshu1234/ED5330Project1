@@ -18,7 +18,7 @@ Td = mean(delay);
 t1_i = max(t1_i) + 10;
 
 
-tau = 0.3: 0.01 :0.8;
+tau = 0.4: 0.02 :0.54;
 tau_len = length(tau);
 mape = zeros(tau_len, 4);
 sim_time = 0:0.002:5;
@@ -34,7 +34,7 @@ for i = 1:4
         sys_i_j = K * (2-Td*s) / ((1+tau(j)*s) * (2+Td*s));
         step_res_sim_i_j = step(sys_i_j, sim_time, opt_i);
         
-        mape(j,i) = mean(abs(step_res_expt_i(t1_i:sim_time_len) - step_res_sim_i_j(t1_i:sim_time_len)));
+        mape(j,i) = 100 * mean(abs(1 - step_res_sim_i_j(t1_i:sim_time_len) ./ step_res_expt_i(t1_i:sim_time_len)));
     end
     
     printf('Step Input', i+4);

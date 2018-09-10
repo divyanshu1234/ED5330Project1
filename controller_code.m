@@ -1,15 +1,13 @@
 % Simulates the closed loop control output
 
 clear all;
-ctr_type = 'pid';
+ctr_type = 'p';
 
-K = 0.90035;
-Td = 0.035;
-tau = 0.42;
+[K, Td, tau] = get_values();
 
 switch ctr_type
     case 'p'
-        Kp = 8.4;
+        Kp = 9.3;
         Kd = 0;
         Ki = 0;
     case 'pd'
@@ -22,8 +20,8 @@ switch ctr_type
         Ki = 14;
     case 'pid'
         Kp = 8.4;
-        Kd = 0.2;
-        Ki = 14;
+        Kd = Kp * 0.01;
+        Ki = Kp * 1;
 end
 
 
@@ -42,3 +40,6 @@ sys = cl_tr_fn;
 step_res_sim = step(sys, sim_time, unit_step_opt);
 
 plot_step([sim_time', ones(length(sim_time), 1), step_res_sim]);
+xlim([0 9]);
+ylim([-0.2 1.2]);
+legend('Reference Value', 'Output Value')

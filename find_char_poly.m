@@ -5,9 +5,8 @@ clear all;
 syms s Kp Kd Ki
 ctr_type = 'pd';
 
-K = 0.90035;
-Td = 0.035;
-tau = 0.42;
+[K, Td, tau] = get_values();
+
 
 switch ctr_type
     case 'p'
