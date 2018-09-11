@@ -1,7 +1,7 @@
 % Simulates the closed loop control output
 
 clear all;
-ctr_type = 'p';
+ctr_type = 'pi';
 
 [K, Td, tau] = get_values();
 
@@ -11,17 +11,17 @@ switch ctr_type
         Kd = 0;
         Ki = 0;
     case 'pd'
-        Kp = 8.4;
-        Kd = 0.1;
+        Kp = 15.5;
+        Kd = Kp * 0.01;
         Ki = 0;
     case 'pi'
-        Kp = 8.4;
+        Kp = 6.2;
         Kd = 0;
-        Ki = 14;
+        Ki = Kp * 1/tau;
     case 'pid'
-        Kp = 8.4;
-        Kd = Kp * 0.01;
-        Ki = Kp * 1;
+        Kp = 6.0;
+        Kd = Kp * 0.001;
+        Ki = Kp * 1/tau;
 end
 
 
@@ -40,6 +40,7 @@ sys = cl_tr_fn;
 step_res_sim = step(sys, sim_time, unit_step_opt);
 
 plot_step([sim_time', ones(length(sim_time), 1), step_res_sim]);
-xlim([0 9]);
+xlim([-1 9]);
 ylim([-0.2 1.2]);
-legend('Reference Value', 'Output Value')
+legend('Reference Value', 'Output Value');
+grid on;

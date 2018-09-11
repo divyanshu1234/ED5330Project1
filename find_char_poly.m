@@ -3,7 +3,7 @@
 clear all;
 
 syms s Kp Kd Ki
-ctr_type = 'pd';
+ctr_type = 'pid';
 
 [K, Td, tau] = get_values();
 
@@ -35,3 +35,5 @@ c2 = coeffs(c1(1), Kd);
 c3 = coeffs(c2(1), Ki);
 
 vpa(cs'/c3, 5)
+
+vpa(cs/c3, 5)

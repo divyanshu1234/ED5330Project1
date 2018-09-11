@@ -1,7 +1,7 @@
 % Plots root locus for different types of controllers
 
 clear all;
-ctr_type = 'p';
+ctr_type = 'pd';
 
 [K, Td, tau] = get_values();
 
@@ -14,14 +14,14 @@ switch ctr_type
         Kd_Kp = 0;
         Ki_Kp = 0;
     case 'pd'
-        Kd_Kp = 0.0119;
+        Kd_Kp = 0.01;
         Ki_Kp = 0;
     case 'pi'
         Kd_Kp = 0;
-        Ki_Kp = 1;
+        Ki_Kp = 1/tau;
     case 'pid'
-        Kd_Kp = 0.005;
-        Ki_Kp = 0.001;
+        Kd_Kp = 0.001;
+        Ki_Kp = 1/tau;
 end
 
 
