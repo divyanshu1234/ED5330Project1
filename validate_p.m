@@ -34,7 +34,7 @@ for i = 1:length(Kp_vals)
     C_s = Kp_vals(i) + s * Kd_vals(i) + Ki_vals(i) / s;
     G_s = C_s * P_s;
 
-    cl_tr_fn = G_s*H_s / (1 + G_s*H_s);
+    cl_tr_fn = G_s / (1 + G_s*H_s);
 
     sim_time = 0:0.002:8;
     unit_step_opt = stepDataOptions('InputOffset', 0, 'StepAmplitude', 1);

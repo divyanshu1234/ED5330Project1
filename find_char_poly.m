@@ -25,7 +25,7 @@ P_s = K * (2-Td*s) / ((1+tau*s)*(2+Td*s));
 
 G_s = C_s * P_s;
 
-% cl_tr_fn = G_s*H_s / (1 + G_s*H_s);
+% cl_tr_fn = G_s / (1 + G_s*H_s);
 cl_ch_pl = 1 + G_s*H_s;
 
 [n, d] = numden(cl_ch_pl);
